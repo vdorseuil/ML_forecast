@@ -43,16 +43,16 @@ def preprocess():
         [
             "TOTAL_MIN_CAPACITY_PRICE_[(EUR/MW)/h]",
             "TOTAL_AVERAGE_CAPACITY_PRICE_[(EUR/MW)/h]",
-            "TOTAL_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h",
+            "TOTAL_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h]",
             "GERMANY_MIN_CAPACITY_PRICE_[(EUR/MW)/h]",
-            "GERMANY_AVERAGE_CAPACITY_PRICE_[(EUR/MW)/h]"	
+            "GERMANY_AVERAGE_CAPACITY_PRICE_[(EUR/MW)/h]",
             "GERMANY_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h]",
             "GERMANY_IMPORT(-)_EXPORT(+)_[MW]",
             "AUSTRIA_MIN_CAPACITY_PRICE_[(EUR/MW)/h]",	
             "AUSTRIA_AVERAGE_CAPACITY_PRICE_[(EUR/MW)/h]",
             "AUSTRIA_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h]",
             "AUSTRIA_IMPORT(-)_EXPORT(+)_[MW]",
-            "GERMANY_SUM_OF_OFFERED_CAPACITY_[MW]"
+            "GERMANY_SUM_OF_OFFERED_CAPACITY_[MW]",
         ]
     ]
 

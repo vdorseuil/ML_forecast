@@ -72,6 +72,28 @@ def preprocess():
 
 
 
+
+    file_path_meteo_germany = "export berlin.csv"
+    df_meteo_germany = pd.read_csv(file_path_meteo_germany).drop(columns=['snow', 'tsun', 'prcp'])
+    df_meteo_germany['date'] = pd.to_datetime(df_meteo_germany['date'])
+    x_germany = pd.merge(df_meteo_germany, x_germany, left_on='date', right_on='DATE_FROM')
+    x_germany = x_germany.drop(columns=['date'])
+    cols = ['DATE_FROM'] + [col for col in x_germany.columns if col != 'DATE_FROM']
+    x_germany = x_germany[cols]
+    x_germany.drop(columns=['GERMANY_BLOCK_EXPORT_LIMIT_[MW]', 'GERMANY_BLOCK_CORE_PORTION_[MW]'], inplace=True)
+
+
+
+
+    file_path_meteo_austria = "export vienna.csv"
+    df_meteo_austria = pd.read_csv(file_path_meteo_austria).drop(columns=['snow', 'tsun', 'prcp'])
+    df_meteo_austria['date'] = pd.to_datetime(df_meteo_austria['date'])
+    x_austria = pd.merge(df_meteo_austria, x_austria, left_on='date', right_on='DATE_FROM')
+    x_austria = x_austria.drop(columns=['date'])
+    cols = ['DATE_FROM'] + [col for col in x_austria.columns if col != 'DATE_FROM']
+    x_austria = x_austria[cols]
+    x_austria.drop(columns=['AUSTRIA_BLOCK_EXPORT_LIMIT_[MW]', 'AUSTRIA_BLOCK_CORE_PORTION_[MW]'], inplace=True)
+
     return {
             "y_austria": y_austria, 
             "y_germany": y_germany, 

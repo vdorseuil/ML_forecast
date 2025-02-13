@@ -80,6 +80,9 @@ def preprocess():
     x_germany = x_germany.drop(columns=['date'])
     cols = ['DATE_FROM'] + [col for col in x_germany.columns if col != 'DATE_FROM']
     x_germany = x_germany[cols]
+    x_germany.drop(columns=['GERMANY_BLOCK_EXPORT_LIMIT_[MW]', 'GERMANY_BLOCK_CORE_PORTION_[MW]'], inplace=True)
+
+
 
 
     file_path_meteo_austria = "export vienna.csv"
@@ -89,6 +92,7 @@ def preprocess():
     x_austria = x_austria.drop(columns=['date'])
     cols = ['DATE_FROM'] + [col for col in x_austria.columns if col != 'DATE_FROM']
     x_austria = x_austria[cols]
+    x_austria.drop(columns=['AUSTRIA_BLOCK_EXPORT_LIMIT_[MW]', 'AUSTRIA_BLOCK_CORE_PORTION_[MW]'], inplace=True)
 
     return {
             "y_austria": y_austria, 

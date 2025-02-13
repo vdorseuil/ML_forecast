@@ -24,6 +24,7 @@ def preprocess():
         [
             "DATE_FROM",
             "GERMANY_BLOCK_DEMAND_[MW]",
+            "TOTAL_DEMAND_[MW]"
             "GERMANY_BLOCK_EXPORT_LIMIT_[MW]",
             "GERMANY_BLOCK_CORE_PORTION_[MW]",
         ],
@@ -32,6 +33,7 @@ def preprocess():
         df_demand["PRODUCT"] == product,
         [           
             "DATE_FROM",
+            "TOTAL_DEMAND_[MW]"
             "AUSTRIA_BLOCK_DEMAND_[MW]",
             "AUSTRIA_BLOCK_EXPORT_LIMIT_[MW]",
             "AUSTRIA_BLOCK_CORE_PORTION_[MW]",

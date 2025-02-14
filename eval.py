@@ -11,10 +11,27 @@ def MSE(y_pred, y_true):
     plt.hist(squared_errors, bins=1000, label="MSE")
     plt.xscale('log')
     return squared_errors.mean(), squared_errors.std()
+def MAE(y_pred, y_true):
+    absolute_errors = np.abs(np.array(y_true)-np.array(y_pred))
+    return absolute_errors.mean(), absolute_errors.std()
 
 
-def custom_metric(y_pred, y_true, a=36.97):
-    "Return the average loss in € for Germany, mean and std"
+def custom_metric(y_pred, y_true, country ):
+    """Computes the custom metric, mean and std
+
+    Args:
+        y_pred (np.array): pred
+        y_true (np.array): ground truth
+        country (str): Germany or Austria
+
+    """
+    a = 0.
+    if country == "Germany":
+        a = 36.97
+    elif country == "Austria":
+        a = 59.89
+
+
     # a = df_results[(df_results["GERMANY_IMPORT(-)_EXPORT(+)_[MW]"]>0) & (df_results["PRODUCT"] == "POS_00_04")]["GERMANY_IMPORT(-)_EXPORT(+)_[MW]"].mean()
     # C = a*avg_cap_price --> you lost all
     y_t = np.array(y_true)

@@ -7,7 +7,7 @@ Si vous le souhaitez, nous pouvons vous proposer un projet visant à effectuer d
 
 
 
-# Explication de ChatGPT sur les différents marchés de l'électricité :
+# Explication sur les différents marchés de l'électricité :
 ## Les 3 marchés
 1. Marché de l’Énergie (ou Marché Spot)
 Ce marché couvre l’achat et la vente d’électricité pour répondre à la demande prévue. Il est divisé en sous-marchés :

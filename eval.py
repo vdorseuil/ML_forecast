@@ -16,7 +16,7 @@ def MAE(y_pred, y_true):
     return absolute_errors.mean(), absolute_errors.std()
 
 
-def custom_metric(y_pred, y_true, country ):
+def custom_metric(y_pred, y_true, country):
     """Computes the custom metric, mean and std
 
     Args:
@@ -37,10 +37,10 @@ def custom_metric(y_pred, y_true, country ):
     y_t = np.array(y_true)
     y_p= np.array(y_pred)
     loss = (a*np.maximum(y_t-y_p, 0) + a*y_p*(y_t-y_p<0))*4. #*4 because it lasts 4hours.
-    plt.hist(loss, bins=1000, label="Custom")
-    plt.xscale('log')
-    plt.legend()
-    plt.savefig("losses_hist.png")
+    # plt.hist(loss, bins=1000, label="Custom")
+    # plt.xscale('log')
+    # plt.legend()
+    # plt.savefig("losses_hist.png")
     return loss.mean(), loss.std()
 
 def S(x, k, p):

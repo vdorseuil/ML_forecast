@@ -75,7 +75,7 @@ def preprocess():
 
 
 
-    file_path_meteo_germany = "export berlin.csv"
+    file_path_meteo_germany = "external_features/export_berlin.csv"
     df_meteo_germany = pd.read_csv(file_path_meteo_germany).drop(columns=['snow', 'tsun', 'prcp'])
     df_meteo_germany['date'] = pd.to_datetime(df_meteo_germany['date'])
     x_germany = pd.merge(df_meteo_germany, x_germany, left_on='date', right_on='DATE_FROM')
@@ -87,7 +87,7 @@ def preprocess():
 
 
 
-    file_path_meteo_austria = "export vienna.csv"
+    file_path_meteo_austria = "external_features/export_vienna.csv"
     df_meteo_austria = pd.read_csv(file_path_meteo_austria).drop(columns=['snow', 'tsun', 'prcp'])
     df_meteo_austria['date'] = pd.to_datetime(df_meteo_austria['date'])
     x_austria = pd.merge(df_meteo_austria, x_austria, left_on='date', right_on='DATE_FROM')

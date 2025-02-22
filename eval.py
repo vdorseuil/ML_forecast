@@ -16,7 +16,7 @@ def MAE(y_pred, y_true):
     return absolute_errors.mean(), absolute_errors.std()
 
 
-def custom_metric(y_pred, y_true, country ):
+def custom_metric(y_pred, y_true, country):
     """Computes the custom metric, mean and std
 
     Args:

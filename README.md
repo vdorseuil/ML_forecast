@@ -1,58 +1,51 @@
 # ML Forecast
 
-This repository contains various machine learning models and experiments for forecasting equilibrium prices in the aFRR (automatic Frequency Restoration Reserve) market for Germany and Austria. The project aims to predict the equilibrium price for a given product using different machine learning techniques. This project took place for the course *Machine Learning for Forecasint* by M.Yannig Goude.
+This repository contains various machine learning models and experiments aimed at forecasting equilibrium prices in the aFRR (automatic Frequency Restoration Reserve) market for Germany and Austria. The goal is to predict the equilibrium price for a given product using different machine learning techniques. This project was developed as part of the *Machine Learning for Forecasting* course by M. Yannig Goude.
 
 ## Project Overview
 
-The aFRR market is a system service market in several European countries designed to help maintain grid balance. Participants in the market submit offers to either increase or decrease electricity production based on real-time demand, providing flexibility to the electricity system.
+The aFRR market is a system service market operating in several European countries to help maintain grid balance. Each day, market participants submit bids in an auction, and based on supply and demand, an equilibrium price is determined.
 
-### How it Works
+This project applies time series prediction methods to forecast the daily equilibrium price in this market for Austria and Germany.
 
-1. **Auction Setup**:
-   - The aFRR auctions occur daily around 8 a.m., for electricity delivery the next day.
-   - Each day features 12 product types, which represent the need to either increase or decrease production within four-hour slots (e.g., POS_00_04 for increased production from 00:00–04:00).
-   - These products are treated as independent, each having a specific demand published in advance.
+### Data
 
-2. **Pricing Mechanism**:
-   - Market participants submit bid curves (volume/price), which are sorted by price.
-   - The equilibrium price for each product is set by the highest-priced offer that meets the required demand.
+The dataset includes market data for Germany and Austria over an 8-month period, consisting of:
+- **Demand**: Daily demand data for each product.
+- **Auction Results Statistics**: Includes statistics on accepted bids, such as equilibrium prices and volumes.
+- **Accepted Bids**: Detailed breakdown of all accepted bids for Germany and Austria on a daily basis.
+- **External Features**: Two CSV files (one for Austria and one for Germany) containing daily weather data.
 
-### The Data
+### Project Goal
 
-The datasets contain data about the aFRR market for Germany and Austria over a period of 8 months:
-- **Demand**: Data on the demand for each product for each day over a period of 8 months.
-- **Auction Results Stats**: File with statistics of the accepted bids (equilibrium price, volume, etc.).
-- **Accepted Bids**: Files showing all accepted bids, with breakdowns for Germany and Austria, for each product daily.
-- **External Features** : Two csv (Austria and Germany) with daily weather data.
+Using these features, the objective is to predict the equilibrium price for each product. The equilibrium prices are listed in the columns:
+- `AUSTRIA_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h]`
+- `GERMANY_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h]`
 
-### The Project
-
-Given all these features, the goal is to predict the equilibrium price for a given product (or for all products if possible). The equilibrium prices are listed in the columns "AUSTRIA_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h]" and "GERMANY_MARGINAL_CAPACITY_PRICE_[(EUR/MW)/h]" in the result overview dataset.
+within the result overview dataset.
 
 ## Models and Experiments
 
-### Generalized Additive Models (GAM)
+The repository is structured as follows:
 
-The `gam.ipynb` notebook contains experiments with Generalized Additive Models (GAM) using the `pyGAM` library. The models are trained to predict the equilibrium prices using various features and smoothing terms.
+### Installation
+Install the necessary dependencies using:
+  ```
+  pip install -r requirements.txt
+  ```
 
-### Decision Trees and Random Forests
+### Global Scripts and Files:
+- `preprocess.py`: Script for data preprocessing.
+- `baseline.py`: Implements a baseline model for comparison.
+- `eval.py`: Contains functions for evaluating models using various metrics.
 
-The `cart.ipynb` and `random_forest.ipynb` notebooks contain experiments with Decision Trees and Random Forests using the `scikit-learn` library. The models are trained to predict the equilibrium prices using various features and hyperparameters.
 
-## Baseline 
+### Jupyter Notebooks for Model Testing and Exploration:
+- `exploration.ipynb`: Data exploration and visualization.
+- `cart.ipynb`: Decision tree-based models, including a variant incorporating Ridge regression in each leaf.
+- `random_forest.ipynb`: Training and evaluation of a Random Forest model.
+- `gam.ipynb`: Experiments with Generalized Additive Models (GAM).
+- `aggregation.ipynb`: Techniques for aggregating different models to improve prediction performance.
 
-The `baseline.py` script contains baseline models for comparison. The baseline models use simple heuristics to predict the equilibrium prices.
+This project provides a comprehensive exploration of machine learning techniques for time series forecasting in the aFRR market, helping to better understand and predict equilibrium prices in Germany and Austria.
 
-## Evaluation
-
-The `eval.py` script contains functions for evaluating the models using various metrics, including Mean Squared Error (MSE), Mean Absolute Error (MAE), and a custom metric specific to the aFRR market.
-
-## Preprocessing
-
-The `preprocess.py` script contains functions for preprocessing the data, including loading the datasets, merging external features, and preparing the data for modeling.
-
-## Requirements
-You can install the requirements needed for this projecte as follow : 
-```pip install - r requirements.txt```
-## Projet de machine learning pour la prévision
-Application de méthodes de prédiction de séries temporelles à la prédiction du prix d'équilibre du marché AFRR en Allemagne et en Autriche. Ce travail fut réalisé dans le cadre du cours du M2 MDA de M. Goude.
